@@ -695,12 +695,11 @@
     <script defer>
       "use strict";
       const telegramUrl = "https://t.me/+i5UJVIq52INiMWNi";
-      let fbqLoaded = false;
 
       function openTelegramChannel() {
-        if (fbqLoaded && typeof fbq === "function") {
+        if (typeof window.fbq === "function") {
           try {
-            fbq("track", "Lead", {
+            window.fbq("track", "Lead", {
               content_name: "Telegram Channel Click",
               content_category: "Webinar Registration",
             });
