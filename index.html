@@ -588,7 +588,7 @@
   <body>
     <main>
       <div class="mobile-event-header">
-        <div class="mobile-event-container clickable">
+        <div class="mobile-event-container">
           <div class="mobile-event-info">
             <p class="mobile-event-date">5-6 fevral</p>
           </div>
@@ -599,11 +599,11 @@
       </div>
       <div class="mobile-main-content">
         <div class="mobile-content-wrapper">
-          <h1 class="mobile-main-title clickable">
+          <h1 class="mobile-main-title">
             Essedan <span>70+ ball</span> olish strategiyasi
           </h1>
           <div class="mobile-content-img">
-            <div class="mobile-center clickable">
+            <div class="mobile-center">
               <p class="mobile-center-text">Shohjahon Akbarov</p>
             </div>
             <img
@@ -615,7 +615,7 @@
               fetchpriority="high"
               width="348"
               height="405"
-              class="mobile-hero-image clickable"
+              class="mobile-hero-image"
               onerror="
                 this.onerror = null;
                 this.src = 'author.png';
@@ -623,7 +623,7 @@
             />
           </div>
           <div class="mobile-content-box">
-            <button class="mobile-cta-button clickable">
+            <button class="mobile-cta-button" type="button">
               Bepul qatnashish
               <img
                 src="./images/arrow-right.svg"
@@ -636,7 +636,7 @@
               />
             </button>
           </div>
-          <div class="timer__info clickable">
+          <div class="timer__info">
             <h2 class="timer__title">Bepul qatnashishga ulguring:</h2>
             <div class="timer__box" id="timer">01:00</div>
           </div>
@@ -644,9 +644,9 @@
       </div>
       <div class="description">
         <div class="description__container">
-          <h3 class="description__title clickable">Bepul darsda siz:</h3>
+          <h3 class="description__title">Bepul darsda siz:</h3>
           <ul class="description__row">
-            <li class="description__col clickable">
+            <li class="description__col">
               <span>1</span>
               <p>
                 Esse yozishdagi
@@ -656,14 +656,14 @@
                 >
               </p>
             </li>
-            <li class="description__col clickable">
+            <li class="description__col">
               <span>2</span>
               <p>
                 <span>90% talabgorlar</span> <br />
                 qiladigan xatolar
               </p>
             </li>
-            <li class="description__col clickable">
+            <li class="description__col">
               <span>3</span>
               <p>
                 Milliy sertifikatdan <span>yuqori daraja</span> <br />
@@ -671,13 +671,13 @@
               </p>
             </li>
           </ul>
-          <div class="bonus-text clickable">
+          <div class="bonus-text">
             🎁 Hoziroq darsga qo'shilng va
             <strong>5 ta bepul esse</strong> darsga ega bo'ling.
           </div>
         </div>
         <div style="padding: 0 10px">
-          <button class="mobile-cta-button clickable">
+          <button class="mobile-cta-button" type="button">
             Bepul qatnashish
             <img
               src="./images/arrow-right.svg"
@@ -709,20 +709,13 @@
       }
 
       function initPage() {
-        // Split initialization into smaller tasks
+        // Faqat "Bepul qatnashish" tugmalari Telegramga ochadi
         setTimeout(() => {
-          // Use event delegation for better performance
-          const handleClick = (e) => {
-            const target = e.target.closest(".clickable");
-            if (target) {
+          document.querySelectorAll(".mobile-cta-button").forEach(function (btn) {
+            btn.addEventListener("click", function (e) {
               e.preventDefault();
-              e.stopPropagation();
               openTelegramChannel();
-            }
-          };
-          document.addEventListener("click", handleClick, {
-            passive: false,
-            capture: true,
+            });
           });
         }, 0);
 
